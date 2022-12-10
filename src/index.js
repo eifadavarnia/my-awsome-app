@@ -21,8 +21,8 @@ let weather = {
   },
 };
 
-#let name = prompt("Enter a city");
-#let hasName = false;
+let name = prompt("Enter a city");
+let hasName = false;
 
 function x(item, index) {
   if (item === name) {
