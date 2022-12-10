@@ -230,3 +230,15 @@ body {
   font-weight: bold;
   color: #6d90ac;
 }
+.source {
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+}
+.source-link {
+  text-decoration: none;
+  color: rgb(73, 136, 172);
+}
+.main-content {
+  margin: 0 auto;
+}
