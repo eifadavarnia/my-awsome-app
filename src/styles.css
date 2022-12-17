@@ -64,7 +64,7 @@ body {
 .row-1 .right-box h3 {
   margin-top: 5px;
 }
-.row-1 .right-box span {
+.row-1 .right-box li {
   display: block;
   font-size: 14px;
   font-weight: normal;
