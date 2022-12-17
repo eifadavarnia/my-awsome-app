@@ -18,6 +18,7 @@
               id="search-input"
               placeholder="Search City or Zip Code"
               autofocus="on"
+              value="tehran"
             />
           </div>
           <div class="search-buttons">
@@ -27,7 +28,7 @@
         </div>
         <div class="row-1">
           <div class="left-box">
-            <img src="image/1.png" />
+            <img src="" alt="Clear" id="icon" class="float-left" />
             <div class="left-box-1">
               <span class="temp-number" id="temp-number">27</span>
               <span class="units" id="units">
@@ -36,13 +37,14 @@
               </span>
             </div>
             <div class="left-box-2">
-              <div>Precipitation: 0%</div>
-              <div>Humidity: 47%</div>
-              <div>Wind: 8 km/h</div>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
+              <li>Humidity: <span id="humidity"></span>%</li>
+              <li>Wind: <span id="wind"></span> km/h</li>
             </div>
           </div>
           <div class="right-box">
-            <h3 id="input-h3">Tehran</h3>
+            <h3 id="input-h3"></h3>
             <span id="datetime"></span>
             <span>Mostly sunny</span>
           </div>
