@@ -82,7 +82,7 @@ function searchcity(event) {
     let temp_number = document.querySelector("#temp-number");
     temp_number.innerHTML = `${temp2}`;
 
-    document.querySelector("#search-input").value = "";
+    //document.querySelector("#search-input").value = "";
     let humidityElement = document.querySelector("#humidity");
     humidityElement.innerHTML = response.data.main.humidity;
 
@@ -107,7 +107,6 @@ function searchcity(event) {
 
 function showCurrent(position) {
   let apiKey = "d8f64daf20945f70357335f6ee7bcec5";
-  console.log(position);
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
 
@@ -115,7 +114,8 @@ function showCurrent(position) {
   axios.get(apiUrl).then(function (response) {
     let h3 = document.querySelector("h3");
     h3.innerHTML = `${capitalizeFirstLetter(response.data.name)}`;
-    let temp2 = Math.round(response.data.main.temp);
+    let celsiusTemperature = response.data.main.temp;
+    let temp2 = Math.round(celsiusTemperature);
 
     let temp_number = document.querySelector("#temp-number");
     temp_number.innerHTML = `${temp2}`;
@@ -145,19 +145,31 @@ function searchCurrent(event) {
   navigator.geolocation.getCurrentPosition(showCurrent);
 }
 
+let convert_to_fahrenheit = document.querySelector("#farenheitlink");
+convert_to_fahrenheit.addEventListener("click", convertToF);
+
+let convert_to_celsius = document.querySelector("#celsiuslink");
+convert_to_celsius.addEventListener("click", convertToC);
+
 function convertToF(event) {
   event.preventDefault();
   let temp_number = document.querySelector("#temp-number");
-  let fahrenheit = (parseInt(temp_number.innerHTML) * 9) / 5 + 32;
-  temp_number.innerHTML = fahrenheit;
+  convert_to_celsius.classList.remove("active");
+  convert_to_fahrenheit.classList.add("active");
+
+  let fahrenheit = (celsiusTemperature * 9) / 5 + 32;
+  temp_number.innerHTML = Math.round(fahrenheit);
 }
 
 function convertToC(event) {
   event.preventDefault();
+  convert_to_celsius.classList.add("active");
+  convert_to_fahrenheit.classList.remove("active");
   let temp_number = document.querySelector("#temp-number");
-  let celsius = Math.ceil((parseInt(temp_number.innerHTML) - 32) / (9 / 5));
-  temp_number.innerHTML = celsius;
+  temp_number.innerHTML = Math.round(celsiusTemperature);
 }
+
+let celsiusTemperature = null;
 
 let search_button = document.querySelector("#search-button");
 search_button.addEventListener("click", searchcity);
@@ -165,8 +177,4 @@ search_button.addEventListener("click", searchcity);
 let search_current = document.querySelector("#search-current");
 search_current.addEventListener("click", searchCurrent);
 
-let convert_to_fahrenheit = document.querySelector("#farenheit-link");
-convert_to_fahrenheit.addEventListener("click", convertToF);
-
-let convert_to_celsius = document.querySelector("#celsius-link");
-convert_to_celsius.addEventListener("click", convertToC);
+searchcity();
