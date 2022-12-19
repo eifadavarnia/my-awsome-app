@@ -14,11 +14,12 @@ body {
   padding: 10px;
   width: 700px;
   margin: 0 auto;
+
   background-color: #fbfbfc;
 }
 .search {
   text-align: center;
-  margin: 35px 70px 20px 70px;
+  margin: 60px 70px 20px 70px;
   border-radius: 4px;
   position: relative;
   display: flex;
@@ -60,15 +61,17 @@ body {
 .row-1 .right-box {
   display: inline-block;
   text-align: right;
+  margin: 35px auto 10px auto;
 }
 .row-1 .right-box h3 {
-  margin-top: 5px;
+  font-size: 25px;
+  margin-top: -5px;
 }
 .row-1 .right-box li {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-top: -22px;
 }
 .row-1 .left-box {
   text-align: left;
@@ -109,12 +112,13 @@ body {
 }
 .row-2 {
   margin-left: 40px;
+  margin-top: 10px;
 }
 .row-2 div {
   display: inline;
 }
 .row-2 .tempH .temp-deg {
-  border-bottom: 1px solid #fbfbfc;
+  border-bottom: 0px solid #fbfbfc;
   font-weight: bold;
 }
 .row-2 div img {
@@ -133,7 +137,7 @@ body {
 .row-3 {
   display: flex;
   justify-content: space-between;
-  margin: 30px auto auto auto;
+  margin: 50px auto auto auto;
   width: 600px;
   height: 100px;
 }

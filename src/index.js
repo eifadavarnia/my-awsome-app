@@ -120,7 +120,7 @@ function showCurrent(position) {
     let temp_number = document.querySelector("#temp-number");
     temp_number.innerHTML = `${temp2}`;
 
-    document.querySelector("#search-input").value = "";
+    //document.querySelector("#search-input").value = "";
     let humidityElement = document.querySelector("#humidity");
     humidityElement.innerHTML = response.data.main.humidity;
 
