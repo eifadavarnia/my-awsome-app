@@ -135,6 +135,13 @@ function searchcity(event) {
   });
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "d8f64daf20945f70357335f6ee7bcec5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showCurrent(position) {
   let apiKey = "d8f64daf20945f70357335f6ee7bcec5";
   let lat = position.coords.latitude;
@@ -167,6 +174,7 @@ function showCurrent(position) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     iconElement.setAttribute("alt", response.data.weather[0].description);
+    getForecast(response.data.coord);
   });
 }
 
