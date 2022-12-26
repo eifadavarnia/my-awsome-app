@@ -10,11 +10,10 @@ body {
 .container {
   border: 2px solid #b6b6c0;
   height: 500px;
-  border-radius: 180px;
+  border-radius: 140px;
   padding: 10px;
   width: 900px;
   margin: 0 auto;
-
   background-color: #fbfbfc;
 }
 .search {
