@@ -64,7 +64,9 @@ function formatDate(timestamp) {
   return `${day} ${hour}:${minute} `;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log("displayForecast");
+  //console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
@@ -91,7 +93,7 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+  //console.log(forecastHTML);
 }
 
 function capitalizeFirstLetter(string) {
@@ -104,7 +106,7 @@ function searchcity(event) {
   let apiKey = "d8f64daf20945f70357335f6ee7bcec5";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(function (response) {
-    console.log(response);
+    //console.log(response);
     let h3 = document.querySelector("h3");
     h3.innerHTML = `${capitalizeFirstLetter(response.data.name)}`;
     let temp2 = Math.round(response.data.main.temp);
@@ -132,13 +134,17 @@ function searchcity(event) {
 
     let descriptionElement = document.querySelector("#description");
     descriptionElement.innerHTML = response.data.weather[0].description;
+
+    console.log(response.data);
+    getForecast(response.data.coord);
   });
 }
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "d8f64daf20945f70357335f6ee7bcec5";
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -181,6 +187,7 @@ function showCurrent(position) {
 function searchCurrent(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showCurrent);
+  displayForecast();
 }
 
 let search_button = document.querySelector("#search-button");
@@ -190,4 +197,4 @@ let search_current = document.querySelector("#search-current");
 search_current.addEventListener("click", searchCurrent);
 
 searchcity();
-displayForecast();
+// displayForecast();
